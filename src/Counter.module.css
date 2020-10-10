@@ -1,0 +1,40 @@
+
+
+
+.flex {
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   justify-content: center;
+   outline: 2px solid #000;
+
+}
+div{
+   border-width:2px;
+   border-color: rgb(190,190,190);
+   border-style: solid;
+   padding: 10px;
+   margin:30px  15px 20px;
+
+}
+
+
+
+
+.butOne {
+
+}
+
+.counter {
+
+}
+.counterTwo {
+   ;
+}
+.butTwo {
+
+}
+.border {
+
+
+}
