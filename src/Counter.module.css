@@ -1,9 +1,9 @@
 .usual {
    font-size: x-large;
    color: black;
-   text-align: center;
    width: 200px;
    height: 200px;
+   justify-content: center
 
 }
 
@@ -16,15 +16,6 @@
 
 }
 
-
-.flex {
-   display: flex;
-   align-items: center;
-   flex-direction: row;
-   justify-content: center;
-   outline: 2px solid #000;
-
-}
 div{
    border-width:2px;
    border-color: rgb(190,190,190);
@@ -34,7 +25,14 @@ div{
    align: center;
 }
 .but{
-   margin: 10px;
+   margin-left: 10px;
 }
 
 
+.flex {
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   justify-content: center;
+
+}

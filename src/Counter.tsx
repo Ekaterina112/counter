@@ -1,7 +1,8 @@
 import React from 'react';
 import But from './But';
-import {Paper} from '@material-ui/core';
+import {Box, createStyles, Paper, Theme} from '@material-ui/core';
 import s from './Counter.module.css'
+import {makeStyles} from '@material-ui/core/styles';
 
 export type CounterType = {
     counter: number
@@ -12,9 +13,18 @@ export type CounterType = {
     maxValue: number
     error: String
 }
-
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            '& > *': {
+                margin: theme.spacing(1),
+            },
+        },
+    }),
+);
 
 function Counter(props: CounterType) {
+    const classes = useStyles();
     function handlerError() {
         switch (props.error) {
             case 'incorrect' :
@@ -32,16 +42,16 @@ function Counter(props: CounterType) {
         <Paper elevation={3}
         square={false}
         >
-            <div className={props.counter == props.maxValue ? s.maximum : s.usual} >
+            <div className={`${props.counter == props.maxValue ? s.maximum : s.usual} ${s.flex}`} >
                 {handlerError()}
             </div>
-            <div>
+            <div className={classes.root}>
                 <But
                     title="add"
                     click={props.add}
                     maxValue={props.maxValue}
                     minValue={props.minValue}
-                    disabled={props.counter === props.maxValue || props.maxValue === props.minValue}
+                    disabled={props.error!=="work"}
 
                 />
                 <But
@@ -49,9 +59,10 @@ function Counter(props: CounterType) {
                     click={props.reset}
                     maxValue={props.maxValue}
                     minValue={props.minValue}
-                    disabled={props.counter === props.minValue || props.maxValue === props.minValue}
+                    disabled={props.error!=="work"}
                 />
             </div>
+
         </Paper>
     );
 }

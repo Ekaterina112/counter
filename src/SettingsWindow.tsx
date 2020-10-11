@@ -1,8 +1,9 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from './SettingWindow.module.css'
 import But from './But';
-import {Paper, TextField} from '@material-ui/core';
+import {createStyles, Paper, TextField, Theme} from '@material-ui/core';
 import {StateType} from './App';
+import {makeStyles} from '@material-ui/core/styles';
 
 export type SettingsType = {
     maxValue:number
@@ -12,9 +13,19 @@ export type SettingsType = {
     checkValue:(maxValue:number, minValue:number,oldMaxValue:number,oldMinValue:number)=>void
     error:string
 }
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            '& > *': {
+                margin: theme.spacing(1),
+            },
+        },
+    }),
+);
 
 
 function Settings(props: SettingsType) {
+    const classes = useStyles();
 
     let [minValue, setMinValue] = useState<number>(props.minValue)
     let [maxValue, setMaxValue] = useState<number>(props.maxValue)
@@ -68,8 +79,8 @@ function Settings(props: SettingsType) {
                     error={maxValue < minValue || minValue < 0 || isNaN(minValue)}
                     />
             </div>
-            <div>
-                <But disabled={maxValue <= minValue} title={'set'} click={setCallback}/>
+            <div className={classes.root}>
+                <But disabled={props.error!=="work" && props.error!=="tabSet"} title={'set'} click={setCallback}/>
             </div>
         </Paper>
     );
