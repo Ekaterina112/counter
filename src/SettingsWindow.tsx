@@ -2,58 +2,73 @@ import React, {ChangeEvent, useState} from 'react';
 import s from './SettingWindow.module.css'
 import But from './But';
 import {Paper, TextField} from '@material-ui/core';
+import {StateType} from './App';
 
 export type SettingsType = {
-    settingValues: (maxValue: number, minValue: number) => void
+    maxValue:number
+    minValue:number
+    settingValues: (state:StateType) => void
+    saveState: (key:string, state:StateType) => void
+    checkValue:(maxValue:number, minValue:number,oldMaxValue:number,oldMinValue:number)=>void
+    error:string
 }
 
 
 function Settings(props: SettingsType) {
 
-    let [minValue, setMinValue] = useState<number>(0)
-    let [maxValue, setMaxValue] = useState<number>(5)
+    let [minValue, setMinValue] = useState<number>(props.minValue)
+    let [maxValue, setMaxValue] = useState<number>(props.maxValue)
 
     const onChangeForMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         let newValue = Number.parseInt(e.currentTarget.value)
+        props.checkValue(newValue,minValue,maxValue,minValue)
         setMaxValue(newValue)
 
     }
     const onChangeForMinValue = (e: ChangeEvent<HTMLInputElement>) => {
         let newValue = Number.parseInt(e.currentTarget.value)
+        props.checkValue(maxValue,newValue,maxValue,minValue)
         setMinValue(newValue)
     }
 
     let setCallback = () => {
-        props.settingValues(maxValue, minValue)
-        localStorage.setItem("maxValue", String(maxValue))
-        localStorage.setItem("minValue", String(minValue))
+        props.settingValues({maxValue,minValue})
+        props.checkValue(maxValue,minValue,maxValue,minValue)
+        props.saveState('savedValues', {maxValue,minValue})
     }
+
     return (
         <Paper
-            elevation={3}/*className={props.counter === props.maxValue || props.counter === props.minValue ? s.counterTwo:s.counter}*/>
-            <div>
+            elevation={3}
+            square={false}
+       >
+            <div  className={s.screen}>
                 <TextField
                     id="outlined-password-input"
-                    label="max value"
+                    label="Max value"
                     type="number"
                     size="small"
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    onChange={onChangeForMaxValue}/>
-            </div>
-            <div>
+                    onChange={onChangeForMaxValue}
+                    defaultValue={props.maxValue}
+                    error={maxValue < minValue || maxValue > 10 || isNaN(maxValue)}
+                />
                 <TextField
                     id="outlined-password-input"
-                    label="start value"
+                    label="Start value"
                     type="number"
                     size="small"
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    onChange={onChangeForMinValue}/>
+                    onChange={onChangeForMinValue}
+                    defaultValue={props.minValue}
+                    error={maxValue < minValue || minValue < 0 || isNaN(minValue)}
+                    />
             </div>
-            <div className={s.align}>
+            <div>
                 <But disabled={maxValue <= minValue} title={'set'} click={setCallback}/>
             </div>
         </Paper>

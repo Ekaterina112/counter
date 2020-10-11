@@ -1,4 +1,20 @@
+.usual {
+   font-size: x-large;
+   color: black;
+   text-align: center;
+   width: 200px;
+   height: 200px;
 
+}
+
+.maximum {
+   font-size: x-large;
+   color: red;
+   align: center;
+   width: 200px;
+   height: 200px;
+
+}
 
 
 .flex {
@@ -15,26 +31,10 @@ div{
    border-style: solid;
    padding: 10px;
    margin:30px  15px 20px;
-
+   align: center;
+}
+.but{
+   margin: 10px;
 }
 
 
-
-
-.butOne {
-
-}
-
-.counter {
-
-}
-.counterTwo {
-   ;
-}
-.butTwo {
-
-}
-.border {
-
-
-}

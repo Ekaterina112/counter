@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Button} from '@material-ui/core';
-
+import s from './Counter.module.css'
 
 export type ButType = {
     click: () => void
@@ -15,7 +15,7 @@ function But(props: ButType) {
     return (<Button variant="outlined" size="small"
                     onClick={props.click}
                     disabled={props.disabled}
-                    // className={props.counter === props.maxValue || props.counter === props.minValue ? s.butOne : s.butTwo}
+                    className={s.but}
         >
             {props.title} </Button>
     );

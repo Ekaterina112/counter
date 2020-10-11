@@ -7,34 +7,15 @@
 
 }
 div{
-   padding: 10px;
-   margin:30px  15px 20px;
-}
-
-.align {
-   text-align: center;
    border-width:2px;
    border-color: rgb(190,190,190);
    border-style: solid;
+   text-align: center;
+}
+
+.screen {
+   width: 200px;
+   height: 200px;
 }
 
 
-
-
-.butOne {
-
-}
-
-.counter {
-
-}
-.counterTwo {
-   ;
-}
-.butTwo {
-
-}
-.border {
-
-
-}
