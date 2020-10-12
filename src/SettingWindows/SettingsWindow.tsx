@@ -1,9 +1,9 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from './SettingWindow.module.css'
-import But from './But';
-import {createStyles, Paper, TextField, Theme} from '@material-ui/core';
-import {StateType} from './App';
-import {makeStyles} from '@material-ui/core/styles';
+import But from '../Button/But';
+import { Paper, TextField} from '@material-ui/core';
+import {StateType} from '../App';
+
 
 export type SettingsType = {
     maxValue:number
@@ -13,19 +13,9 @@ export type SettingsType = {
     checkValue:(maxValue:number, minValue:number,oldMaxValue:number,oldMinValue:number)=>void
     error:string
 }
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            '& > *': {
-                margin: theme.spacing(1),
-            },
-        },
-    }),
-);
 
 
 function Settings(props: SettingsType) {
-    const classes = useStyles();
 
     let [minValue, setMinValue] = useState<number>(props.minValue)
     let [maxValue, setMaxValue] = useState<number>(props.maxValue)
@@ -49,8 +39,11 @@ function Settings(props: SettingsType) {
     }
 
     return (
-        <Paper
-            elevation={3}
+        <div className={s.counter}>
+        <Paper  style={{
+            backgroundColor: "#dceef8"
+        }}
+            elevation={8}
             square={false}
        >
             <div  className={s.screen}>
@@ -79,10 +72,13 @@ function Settings(props: SettingsType) {
                     error={maxValue < minValue || minValue < 0 || isNaN(minValue)}
                     />
             </div>
-            <div className={classes.root}>
-                <But disabled={props.error!=="work" && props.error!=="tabSet"} title={'set'} click={setCallback}/>
+            <div className={s.buttons}>
+                <But disabled={props.error!=="work" && props.error!=="tabSet"}
+                     title={'set'}
+                     click={setCallback}/>
             </div>
         </Paper>
+            </div>
     );
 }
 

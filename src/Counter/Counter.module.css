@@ -1,0 +1,31 @@
+.usual {
+   color: black;
+}
+.maximum {
+   color: red;
+}
+.screen {
+   border: 1px solid #1256bc;
+   width: 150px;
+   height: 150px;
+   justify-content: center;
+   font-size: x-large;
+   display: flex;
+   align-items: center;
+   text-align: center;
+}
+.counter {
+   width: 250px;
+   height: 250px;
+   border: 1px solid red;
+   margin: 50px;
+}
+
+.buttons {
+   display: flex;
+   justify-content: space-around;
+   border: 1px solid #2fde1b;
+}
+
+
+

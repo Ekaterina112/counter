@@ -1,0 +1,9 @@
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("1dfa5269037539.5b7298e945de1.jpg");
+    background-position: center;
+    background-size: cover; /*//для сохранеия пропорций*/
+}

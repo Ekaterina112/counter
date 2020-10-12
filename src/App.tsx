@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import s from './SettingWindow.module.css';
-import Counter from './Counter';
-import Settings from './SettingsWindow';
+import './App.css';
+import Counter from './Counter/Counter';
+import Settings from './SettingWindows/SettingsWindow';
+
+
 
 
 export type StateType = {
@@ -55,8 +57,7 @@ function App() {
         setMinValue(state.minValue)
     }
 
-    return (<div className={s.flex}>
-
+    return (<div className={"wrapper"}>
             <Settings
                 minValue={state.minValue}
                 maxValue={state.maxValue}
@@ -74,6 +75,11 @@ function App() {
                 error={error}
             />
         </div>
+
+
+
+
+
     );
 }
 
