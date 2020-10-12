@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from './SettingWindow.module.css'
 import But from '../Button/But';
-import { Paper, TextField} from '@material-ui/core';
+import {Button, Paper, TextField} from '@material-ui/core';
 import {StateType} from '../App';
 
 
@@ -43,11 +43,17 @@ function Settings(props: SettingsType) {
         <Paper  style={{
             backgroundColor: "#dceef8"
         }}
-            elevation={8}
+            elevation={24}
             square={false}
        >
             <div  className={s.screen}>
+                <div>
                 <TextField
+                    style={{
+                        fontFamily: 'inherit',
+                        color: '#ae5c6a',
+                        borderColor: "#ae5c6a"
+                    }}
                     id="outlined-password-input"
                     label="Max value"
                     type="number"
@@ -59,6 +65,8 @@ function Settings(props: SettingsType) {
                     defaultValue={props.maxValue}
                     error={maxValue < minValue || maxValue > 10 || isNaN(maxValue)}
                 />
+                </div>
+                <div>
                 <TextField
                     id="outlined-password-input"
                     label="Start value"
@@ -71,6 +79,7 @@ function Settings(props: SettingsType) {
                     defaultValue={props.minValue}
                     error={maxValue < minValue || minValue < 0 || isNaN(minValue)}
                     />
+                </div>
             </div>
             <div className={s.buttons}>
                 <But disabled={props.error!=="work" && props.error!=="tabSet"}

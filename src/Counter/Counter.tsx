@@ -32,7 +32,7 @@ function Counter(props: CounterType) {
 
     return (
       <div className={s.counter}>
-        <Paper elevation={8}
+        <Paper elevation={24}
         square={false}
                style={{
                    backgroundColor: "#dceef8"
@@ -47,7 +47,7 @@ function Counter(props: CounterType) {
                     click={props.add}
                     maxValue={props.maxValue}
                     minValue={props.minValue}
-                    disabled={props.error!=="work"}
+                    disabled={props.error!=="work"  || props.counter == props.maxValue}
                 />
                 <But
                     title="reset"

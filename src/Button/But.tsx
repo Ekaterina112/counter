@@ -15,6 +15,11 @@ function But(props: ButType) {
 
     return (
             <Button
+                style={{
+                    fontFamily: 'inherit',
+                    color: '#ae5c6a',
+                    borderColor: "#ae5c6a"
+                }}
                 variant="outlined"
                 size="small"
                 onClick={props.click}
