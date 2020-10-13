@@ -4,8 +4,6 @@ import Counter from './Counter/Counter';
 import Settings from './SettingWindows/SettingsWindow';
 
 
-
-
 export type StateType = {
     maxValue: number
     minValue: number

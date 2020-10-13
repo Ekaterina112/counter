@@ -16,9 +16,10 @@
    align-content: center;
    width: 200px;
    height: 250px;
-   border: 5px solid #ae5c6a;
+   border: 3px solid #ae5c6a;
    margin: 20px;
    padding: 10px;
+   text-align: center;
 
 }
 
@@ -26,18 +27,18 @@
 
    display: flex;
    justify-content: space-around;
-   border: 5px solid #ae5c6a;
+   border: 3px solid #ae5c6a;
    margin: 20px;
    padding: 10px;
 }
 .usual {
    color: #67657d;
-   font-size: 77px;
+   font-size: 50px;
    font-family: Bahnschrift;
 }
 .maximum {
    color: #ffd25f;
-   font-size: 77px;
+   font-size: 50px;
    font-family: Bahnschrift;
 }
 
