@@ -30,7 +30,7 @@ function App() {
     let [error, setError] = useState<string>('work')
 
     function checkValue(maxValue: number, minValue: number, oldMaxValue: number, oldMinValue: number) {
-        if (maxValue < minValue || maxValue > 10 || minValue < 0) {
+        if (maxValue <= minValue || maxValue > 10 || minValue < 0) {
             setError('incorrect')
         } else if (isNaN(minValue) || isNaN(maxValue)) {
             setError('enter value')

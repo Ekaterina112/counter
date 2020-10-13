@@ -5,8 +5,6 @@ import {Button} from '@material-ui/core';
 export type ButType = {
     click: () => void
     disabled: boolean
-    maxValue?: number
-    minValue?: number
     title: string
 }
 

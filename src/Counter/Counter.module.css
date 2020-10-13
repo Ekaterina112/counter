@@ -20,6 +20,8 @@
    margin: 20px;
    padding: 10px;
    text-align: center;
+   font-family: Bahnschrift;
+   font-size: 50px;
 
 }
 
@@ -33,13 +35,9 @@
 }
 .usual {
    color: #67657d;
-   font-size: 50px;
-   font-family: Bahnschrift;
 }
 .maximum {
    color: #ffd25f;
-   font-size: 50px;
-   font-family: Bahnschrift;
 }
 
 

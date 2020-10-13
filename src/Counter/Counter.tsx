@@ -29,7 +29,7 @@ function Counter(props: CounterType) {
                 return props.counter
         }
     }
-
+//can be without checking
     return (
       <div className={s.counter}>
         <Paper elevation={24}
@@ -45,15 +45,11 @@ function Counter(props: CounterType) {
                 <But
                     title="add"
                     click={props.add}
-                    maxValue={props.maxValue}
-                    minValue={props.minValue}
                     disabled={props.error!=="work"  || props.counter == props.maxValue}
                 />
                 <But
                     title="reset"
                     click={props.reset}
-                    maxValue={props.maxValue}
-                    minValue={props.minValue}
                     disabled={props.error!=="work"}
                 />
             </div>

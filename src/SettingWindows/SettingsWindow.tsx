@@ -63,7 +63,7 @@ function Settings(props: SettingsType) {
                     }}
                     onChange={onChangeForMaxValue}
                     defaultValue={props.maxValue}
-                    error={maxValue < minValue || maxValue > 10 || isNaN(maxValue)}
+                    error={maxValue <= minValue || maxValue > 10 || isNaN(maxValue)}
                 />
                 </div>
                 <div>
@@ -77,7 +77,7 @@ function Settings(props: SettingsType) {
                     }}
                     onChange={onChangeForMinValue}
                     defaultValue={props.minValue}
-                    error={maxValue < minValue || minValue < 0 || isNaN(minValue)}
+                    error={maxValue <= minValue || minValue < 0 || isNaN(minValue)}
                     />
                 </div>
             </div>
