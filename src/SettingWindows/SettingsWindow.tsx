@@ -16,7 +16,7 @@ export type SettingsType = {
 
 
 function Settings(props: SettingsType) {
-
+//delete here states!!!
     let [minValue, setMinValue] = useState<number>(props.minValue)
     let [maxValue, setMaxValue] = useState<number>(props.maxValue)
 
@@ -24,7 +24,6 @@ function Settings(props: SettingsType) {
         let newValue = Number.parseInt(e.currentTarget.value)
         props.checkValue(newValue,minValue,maxValue,minValue)
         setMaxValue(newValue)
-
     }
     const onChangeForMinValue = (e: ChangeEvent<HTMLInputElement>) => {
         let newValue = Number.parseInt(e.currentTarget.value)
