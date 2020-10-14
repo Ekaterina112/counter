@@ -21,7 +21,7 @@ function Settings(props: SettingsType) {
     let [maxValue, setMaxValue] = useState<number>(props.maxValue)
 
     const onChangeForMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-        let newValue = Number.parseInt(e.currentTarget.value)
+        let newValue = Number.parseInt(e.currentTarget.value) //parse int????
         props.checkValue(newValue,minValue,maxValue,minValue)
         setMaxValue(newValue)
     }
