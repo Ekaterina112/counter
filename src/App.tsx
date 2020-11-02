@@ -30,7 +30,6 @@ function App() {
     let [error, setError] = useState<string>('work')
 
 
-
     function add() {
         setCounter(counter + 1)
     }
@@ -45,7 +44,7 @@ function App() {
         setMinValue(state.minValue)
     }
 
-    return (<div className={"wrapper"}>
+    return (<div className={'wrapper'}>
             <Settings
                 minValue={state.minValue}
                 maxValue={state.maxValue}
@@ -53,7 +52,7 @@ function App() {
                 settingValues={settingValues}
                 error={error}
                 setError={setError}
-              />
+            />
             <Counter
                 minValue={minValue}
                 maxValue={maxValue}
@@ -63,9 +62,6 @@ function App() {
                 error={error}
             />
         </div>
-
-
-
 
 
     );
