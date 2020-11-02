@@ -1,7 +1,8 @@
 import React from 'react';
 import But from '../Button/But';
 import {Paper} from '@material-ui/core';
-import s from './Counter.module.css'
+import s from './Counter.module.css';
+
 
 
 export type CounterType = {
@@ -11,26 +12,14 @@ export type CounterType = {
     disabled?: boolean
     minValue: number
     maxValue: number
-    error: String
+    error: string
 }
 
 
 function Counter(props: CounterType) {
 
-    function handlerError() {
-        switch (props.error) {
-            case 'incorrect' :
-                return 'incorrect value'
-            case 'tabSet':
-                return 'press \'set\''
-            case 'enter value':
-                return 'enter value'
-            default:
-                return props.counter
-        }
-    }
-//can be without checking
-    return (
+
+return (
       <div className={s.counter}>
         <Paper elevation={24}
         square={false}
@@ -39,7 +28,7 @@ function Counter(props: CounterType) {
                }}
         >
             <div className={`${props.counter == props.maxValue ? s.maximum : s.usual} ${s.screen}`} >
-                {handlerError()}
+                {props.error==='work' ? props.counter:props.error}
             </div>
             <div className={s.buttons}>
                 <But

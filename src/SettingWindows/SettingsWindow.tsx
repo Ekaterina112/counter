@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from './SettingWindow.module.css'
 import But from '../Button/But';
-import {Button, Paper, TextField} from '@material-ui/core';
+import { Paper, TextField} from '@material-ui/core';
 import {StateType} from '../App';
 
 
@@ -10,8 +10,8 @@ export type SettingsType = {
     minValue:number
     settingValues: (state:StateType) => void
     saveState: (key:string, state:StateType) => void
-    checkValue:(maxValue:number, minValue:number,oldMaxValue:number,oldMinValue:number)=>void
     error:string
+    setError:(error:string)=>void
 }
 
 
@@ -20,20 +20,32 @@ function Settings(props: SettingsType) {
     let [minValue, setMinValue] = useState<number>(props.minValue)
     let [maxValue, setMaxValue] = useState<number>(props.maxValue)
 
+    function checkValue(maxValue: number, minValue: number, oldMaxValue: number, oldMinValue: number) {
+        if (maxValue <= minValue || maxValue > 10 || minValue < 0 ) {
+            props.setError('incorrect value')
+        } else if (isNaN(minValue) || isNaN(maxValue)) {
+            props.setError('enter value')
+        } else if (oldMaxValue != maxValue || oldMinValue != minValue) {
+           props.setError('press \'set\'')
+        } else {
+            props.setError('work')
+        }
+    }
+
     const onChangeForMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-        let newValue = Number.parseInt(e.currentTarget.value) //parse int????
-        props.checkValue(newValue,minValue,maxValue,minValue)
+        let newValue = Number.parseInt(e.currentTarget.value)
+        checkValue(newValue,minValue,maxValue,minValue)
         setMaxValue(newValue)
     }
     const onChangeForMinValue = (e: ChangeEvent<HTMLInputElement>) => {
         let newValue = Number.parseInt(e.currentTarget.value)
-        props.checkValue(maxValue,newValue,maxValue,minValue)
+        checkValue(maxValue,newValue,maxValue,minValue)
         setMinValue(newValue)
     }
 
     let setCallback = () => {
         props.settingValues({maxValue,minValue})
-        props.checkValue(maxValue,minValue,maxValue,minValue)
+        checkValue(maxValue,minValue,maxValue,minValue)
         props.saveState('savedValues', {maxValue,minValue})
     }
 
@@ -62,7 +74,7 @@ function Settings(props: SettingsType) {
                     }}
                     onChange={onChangeForMaxValue}
                     defaultValue={props.maxValue}
-                    error={maxValue <= minValue || maxValue > 10 || isNaN(maxValue)}
+                    error={props.maxValue <= props.minValue || props.maxValue > 10 || isNaN(props.maxValue)}
                 />
                 </div>
                 <div>
@@ -76,12 +88,12 @@ function Settings(props: SettingsType) {
                     }}
                     onChange={onChangeForMinValue}
                     defaultValue={props.minValue}
-                    error={maxValue <= minValue || minValue < 0 || isNaN(minValue)}
+                    error={props.maxValue <= props.minValue || props.minValue < 0 || isNaN(props.minValue)}
                     />
                 </div>
             </div>
             <div className={s.buttons}>
-                <But disabled={props.error!=="work" && props.error!=="tabSet"}
+                <But disabled={props.error!=="work" && props.error!=='press \'set\''}
                      title={'set'}
                      click={setCallback}/>
             </div>

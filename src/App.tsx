@@ -29,17 +29,7 @@ function App() {
     let [counter, setCounter] = useState<number>(state.minValue)
     let [error, setError] = useState<string>('work')
 
-    function checkValue(maxValue: number, minValue: number, oldMaxValue: number, oldMinValue: number) {
-        if (maxValue <= minValue || maxValue > 10 || minValue < 0) {
-            setError('incorrect')
-        } else if (isNaN(minValue) || isNaN(maxValue)) {
-            setError('enter value')
-        } else if (oldMaxValue != maxValue || oldMinValue != minValue) {
-            setError('tabSet')
-        } else {
-            setError('work')
-        }
-    }
+
 
     function add() {
         setCounter(counter + 1)
@@ -61,9 +51,9 @@ function App() {
                 maxValue={state.maxValue}
                 saveState={saveState}
                 settingValues={settingValues}
-                checkValue={checkValue}
                 error={error}
-            />
+                setError={setError}
+              />
             <Counter
                 minValue={minValue}
                 maxValue={maxValue}
